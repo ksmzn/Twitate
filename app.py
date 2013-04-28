@@ -14,7 +14,7 @@ from twython import Twython
 
 app_key='lEB2S7yylnjyg9eSpDRQ'
 app_secret='rradOOyNFm9T1d9Dq8rKTbN5TrYp4HHoRFEu5ftkAs'
-callback_url='http://127.0.0.1:5000/get_callback'
+callback_url='http://twitate.herokuapp.com/get_callback'
 
 DEBUG = True
 SECRET_KEY = '\x9b7\xeb;x\xb5\x8e\xed/\x88\x9e\x07W\xb1/\xc5)\xaaG#\x81\x99w\xe7'
