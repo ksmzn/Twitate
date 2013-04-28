@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  {#
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=title>
+        <dt>Text:
+        <dd><textarea name=text rows=5 cols=40></textarea>
+        <dd><input type=submit value=Share>
+      </dl>
+    </form>
+    #}
+  <ul class=tweets>
+      {% for tweet in tweets %}
+      <li>
+      <h2 style="margin-top:5px;">{{tweet['user']['name']}}</h2>
+      {{tweet['text']}}
+      </li>
+      {% else %}
+      <li><em>Unbelievable.  No tweets here so far</em>
+  {% endfor %}
+  </ul>
+  {% endif %}
+{% endblock %}

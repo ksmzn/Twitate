@@ -1,1 +1,1 @@
-web: python twitate/__init__.py
+web: python app.py

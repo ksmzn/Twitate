@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Twi縦</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='taketori.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='taketori.js') }}" charset="UTF-8"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+        (new Taketori()).set({fontFamily:'serif',togglable:true}).element('ul.tweets').toVertical();
+        //]]>
+        </script>
+    </head>
+    <body>
+        <div class=page>
+            <h1>つい縦</h1>
+            <div class=metanav>
+                {% if not session.logged_in %}
+                <a href="{{ url_for('login') }}">log in</a>
+                {% else %}
+                <a href="{{ url_for('logout') }}">log out</a>
+                {% endif %}
+            </div>
+            {% for message in get_flashed_messages() %}
+            <div class=flash>{{ message }}</div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{
+                url_for('static', filename='jquery-2.0.0.min.js') }}">\x3C/script>')</script>
+            <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}" charset="UTF-8"></script>
+        </body>
+    </html>
