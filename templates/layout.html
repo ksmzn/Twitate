@@ -2,18 +2,62 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Twi縦</title>
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='taketori.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='taketori.js') }}" charset="UTF-8"></script>
+        <title>つい縦</title>
+        <link rel=stylesheet type=text/css href="/static/css/style.css">
+        <link rel=stylesheet type=text/css href="/static/css/taketori.css">
+        <link rel=stylesheet type=text/css href="/static/css/bootstrap.min.css">
+        <link rel=stylesheet type=text/css href="/static/css/bootstrap-responsive.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/static/js/jquery-2.0.0.min.js">\x3C/script>')</script>
+        <script type="text/javascript" src="/static/js/taketori.js" charset="UTF-8"></script>
         <script type="text/javascript">
             //<![CDATA[
-        (new Taketori()).set({fontFamily:'serif',togglable:true}).element('ul.tweets').toVertical();
-        //]]>
-        </script>
+        $(function(){
+                (new Taketori()).set({fontFamily:'serif',togglable:false}).element('ul.tweets').toVertical();
+                (new Taketori()).set({fontFamily:'serif',togglable:false}).element('div.tweets').toVertical();
+                $("ul.tweets").css("display","block");
+                $("div.tweets").css("display","block");
+                });
+//]]>
+</script>
     </head>
     <body>
+        <div class="navbar navber-fixed-top navbar-inverse navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="{{ url_for('index') }}" class="brand">つい縦</a>
+                    <ul class="nav">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                    </ul>
+            {% for message in get_flashed_messages() %}
+            <span class=flash>{{ message }}</span>
+            {% endfor %}
+                    {% if not session.logged_in %}
+                    <a href="{{ url_for('login') }}" class="login pull-right">
+                        <img src="/static/img/sign-in-with-twitter-gray.png"  alt="Twitterでログイン" />
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('logout') }}" class="logout pull-right">
+                        log out
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="container" class="container">
+            <div class="row">
+                <div id="main" class="span10">
+                    {% block body %}{% endblock %}
+                </div>
+                <div id="title" class="span2"><div>
+                        <a href="{{ url_for('index') }}">
+                            <img src="/static/img/title.png"  alt="つい縦" />
+                        </a>
+                </div></div>
+            </div>
+        </div>
+        <div id="footer"></div>
+        <!--
         <div class=page>
             <h1>つい縦</h1>
             <div class=metanav>
@@ -26,11 +70,7 @@
             {% for message in get_flashed_messages() %}
             <div class=flash>{{ message }}</div>
             {% endfor %}
-            {% block body %}{% endblock %}
-        </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{
-                url_for('static', filename='jquery-2.0.0.min.js') }}">\x3C/script>')</script>
-            <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.min.js') }}" charset="UTF-8"></script>
+        </div> -->
+            <script type="text/javascript" src="/static/js/bootstrap.min.js" charset="UTF-8"></script>
         </body>
     </html>

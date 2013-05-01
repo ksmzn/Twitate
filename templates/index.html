@@ -1,26 +1,26 @@
 {% extends "layout.html" %}
 {% block body %}
-  {% if session.logged_in %}
-  {#
-    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
-      <dl>
-        <dt>Title:
-        <dd><input type=text size=30 name=title>
-        <dt>Text:
-        <dd><textarea name=text rows=5 cols=40></textarea>
-        <dd><input type=submit value=Share>
-      </dl>
-    </form>
-    #}
-  <ul class=tweets>
-      {% for tweet in tweets %}
-      <li>
-      <h2 style="margin-top:5px;">{{tweet['user']['name']}}</h2>
-      {{tweet['text']}}
-      </li>
-      {% else %}
-      <li><em>Unbelievable.  No tweets here so far</em>
-  {% endfor %}
-  </ul>
-  {% endif %}
+{% if session.logged_in %}
+<ul class=tweets>
+    {% for tweet in tweets %}
+    <li>
+    <h2 style="margin-top:5px;">{{tweet['user']['name']}}</h2>
+    {{tweet['text']}}
+    </li>
+    {% else %}
+    <li><em>Unbelievable.  No tweets here so far</em>
+    {% endfor %}
+</ul>
+{% else %}
+<div class="tweets">
+<h1>つい縦とは？</h1>
+ツイッターのタイムラインを縦書きに表示するアプリです。
+<br />
+右上からツイッターアカウントを用いてログインしてください。
+<br />
+表示には時間がかかることがあります。
+<br />
+現状では最新二百件しか取得できません。すみません。
+</div>
+{% endif %}
 {% endblock %}
