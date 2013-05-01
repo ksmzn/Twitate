@@ -6,13 +6,13 @@ from flask import Flask, render_template, url_for, redirect, \
         session, request, flash, jsonify
 from twython import Twython
 
-app_key='lEB2S7yylnjyg9eSpDRQ'
-app_secret='rradOOyNFm9T1d9Dq8rKTbN5TrYp4HHoRFEu5ftkAs'
+app_key=os.getenv("app_key")
+app_secret=os.getenv("app_secret")
 #callback_url='http://127.0.0.1:5000/get_callback'
 callback_url='http://twitate.herokuapp.com/get_callback'
 
 DEBUG = True
-SECRET_KEY = '\x9b7\xeb;x\xb5\x8e\xed/\x88\x9e\x07W\xb1/\xc5)\xaaG#\x81\x99w\xe7'
+SECRET_KEY =os.getenv("SECRET_KEY")
 
 application = Flask(__name__)
 application.config.from_object(__name__)
@@ -25,8 +25,8 @@ def index():
         oauth_token = token[0]
         oauth_token_secret = token[1]
         entry = {}
-        t = Twython(app_key='lEB2S7yylnjyg9eSpDRQ',
-            app_secret='rradOOyNFm9T1d9Dq8rKTbN5TrYp4HHoRFEu5ftkAs',
+        t = Twython(app_key=app_key,
+            app_secret=app_secret,
             oauth_token=oauth_token,
             oauth_token_secret=oauth_token_secret)
 

@@ -4,12 +4,6 @@ body {
   background-image: url(/static/img/fujiyama.jpg);
 }
 
-/*
-a, h1, h2       { color: #377BA8; }
-h1, h2          { font-family: 'Georgia', serif; margin: 0; }
-h1              { border-bottom: 2px solid #eee; }
-h2              { font-size: 1.2em; }
- */
 .login {
   display: block;
   padding: 5px 20px;
@@ -29,6 +23,7 @@ h2              { font-size: 1.2em; }
   height: 728px;
   background-image: url(/static/img/scroll.png);
   background-size: contain;
+  background-repeat: no-repeat;
 }
 #main .tweets {
   height: 515px;

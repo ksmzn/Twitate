@@ -9,15 +9,15 @@
         <link rel=stylesheet type=text/css href="/static/css/bootstrap-responsive.min.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/static/js/jquery-2.0.0.min.js">\x3C/script>')</script>
-        <script type="text/javascript" src="/static/js/taketori.js" charset="UTF-8"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-        $(function(){
-                (new Taketori()).set({fontFamily:'serif',togglable:false}).element('ul.tweets').toVertical();
-                (new Taketori()).set({fontFamily:'serif',togglable:false}).element('div.tweets').toVertical();
-                $("ul.tweets").css("display","block");
-                $("div.tweets").css("display","block");
-                });
+            <script type="text/javascript" src="/static/js/taketori.js" charset="UTF-8"></script>
+            <script type="text/javascript">
+                //<![CDATA[
+            $(function(){
+                    (new Taketori()).set({fontFamily:'serif',togglable:false,height:'500px'}).element('ul.tweets').toVertical();
+                    (new Taketori()).set({fontFamily:'serif',togglable:false}).element('div.tweets').toVertical();
+                    $("ul.tweets").css("display","block");
+                    $("div.tweets").css("display","block");
+                    });
 //]]>
 </script>
     </head>
@@ -29,9 +29,9 @@
                     <ul class="nav">
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                     </ul>
-            {% for message in get_flashed_messages() %}
-            <span class=flash>{{ message }}</span>
-            {% endfor %}
+                    {% for message in get_flashed_messages() %}
+                    <span class=flash>{{ message }}</span>
+                    {% endfor %}
                     {% if not session.logged_in %}
                     <a href="{{ url_for('login') }}" class="login pull-right">
                         <img src="/static/img/sign-in-with-twitter-gray.png"  alt="Twitterでログイン" />
@@ -71,6 +71,9 @@
             <div class=flash>{{ message }}</div>
             {% endfor %}
         </div> -->
-            <script type="text/javascript" src="/static/js/bootstrap.min.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.min.js" charset="UTF-8"></script>
+        <script type="text/javascript">
+            $("div.taketori-col").css("height","515px");
+            </script>
         </body>
     </html>

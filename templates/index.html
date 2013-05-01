@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 {% if session.logged_in %}
-<ul class=tweets>
+<ul class="tweets">
     {% for tweet in tweets %}
     <li>
     <h2 style="margin-top:5px;">{{tweet['user']['name']}}</h2>
